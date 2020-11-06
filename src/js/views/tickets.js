@@ -46,7 +46,7 @@ class TicketsUI {
 	static ticketTemplate(ticket, currency) {
 		return `
 		<div class="col s12 m6">
-            <div class="card ticket-card">
+            <div class="card ticket-card" data-idd="${ticket.idd}" data-currency="${currency}">
               <div class="ticket-airline d-flex align-items-center">
                 <img
                   src="${ticket.airline_logo}"
@@ -71,8 +71,10 @@ class TicketsUI {
                 <span class="ticket-price ml-auto">${currency}${ticket.price}</span>
               </div>
               <div class="ticket-additional-info">
-                <span class="ticket-transfers">Пересадок: ${ticket.transfers}</span>
-                <span class="ticket-flight-number">Номер рейса: ${ticket.flight_number}</span>
+	            <span class="ticket-transfers">Пересадок: ${ticket.transfers}</span>
+	            <span class="ticket-flight-number">Номер рейса: ${ticket.flight_number}</span>
+              	<a class="waves-effect waves-light btn-small green darken-1 add-favorite ml-auto"
+                >Add to favorites</a>
               </div>
             </div>
           </div>

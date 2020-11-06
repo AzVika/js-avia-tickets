@@ -4,6 +4,7 @@ import locations from './store/locations';
 import formUI from './views/form';
 import ticketsUI from './views/tickets';
 import currencyUI from './views/currency';
+import favoritesUI from './views/favorites';
 
 document.addEventListener('DOMContentLoaded', e => {
 	const form = formUI.form;
@@ -14,6 +15,20 @@ document.addEventListener('DOMContentLoaded', e => {
 		e.preventDefault();
 		onFormSubmit();
 	});
+
+
+	favoritesUI.renderFavorites(favoritesUI.favorites);
+
+	favoritesUI.cardsFavorite.addEventListener('click', e => {
+		const target = e.target;
+		if(target.classList.contains('delete-favorite')) {
+			const cardParent = target.closest('.favorite-item');
+			if(cardParent) {
+				favoritesUI.deleteFavorite(cardParent.dataset.idd);
+			}
+		}
+	});
+
 
 	// Handlers
 	async function initApp() {
@@ -40,5 +55,28 @@ document.addEventListener('DOMContentLoaded', e => {
 
 		console.log(locations.lastSearch);
 		ticketsUI.renderTickets(locations.lastSearch);
+
+		favoritesUI.cardsSection.addEventListener('click', e => {
+			const target = e.target;
+			if(target.classList.contains('add-favorite')) {
+				const cardParent = target.closest('.ticket-card');
+				if(cardParent) {
+					const cardId = cardParent.dataset.idd;
+					const cardCurrency = cardParent.dataset.currency;
+					const cardFavorite = locations.lastSearch.filter(item => item.idd === cardId);
+					favoritesUI.addFavorite(cardId, cardCurrency, cardFavorite[0]);
+				}
+			}
+			
+		});
+
 	}
 });
+
+/*
+Реализовать функционал добавления билетов в избранные. 
+У вас должно быть отдельное хранилище (store) для избранных билетов. 
+При клике на кнопку "Add to favorites" объект билета нужно добавлять в хранилище.
+В шапке есть дропдаун в котором нужно выводить все избранные билеты.
+
+*/

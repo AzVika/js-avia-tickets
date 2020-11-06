@@ -100,6 +100,7 @@ class Locations {
 				airline_name: this.getAirlineNameByCode(ticket.airline),
 				departure_at: this.formateDate(ticket.departure_at, 'dd MMM yyyy HH:mm'),
 				return_at: this.formateDate(ticket.return_at, 'dd MMM yyyy HH:mm'),
+				idd: this.formateDate(ticket.departure_at, 'dMMyyyyHH') + Math.floor(Math.random() * 100),
 			};
 		});
 	}
