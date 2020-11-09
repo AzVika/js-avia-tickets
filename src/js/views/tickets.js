@@ -23,7 +23,11 @@ class TicketsUI {
 		});
 
 		this.container.insertAdjacentHTML('afterbegin', fragment);
-
+		
+		window.scrollTo({
+		    top: 500,
+		    behavior: "smooth"
+		});
 	}
 
 	clearContainer() {

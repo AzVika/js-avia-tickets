@@ -43,9 +43,12 @@ class FavoritesUI {
 	}
 
 	addFavorite (id, currency, ticket) {
-		ticket.currency = currency;
-		this.favorites.push(ticket);
-		this.renderFavorites(this.favorites);
+		const ticketByIdd = this.favorites.filter(ticket => ticket.idd === id);
+		if(!ticketByIdd.length) {
+			ticket.currency = currency;
+			this.favorites.push(ticket);
+			this.renderFavorites(this.favorites);
+		}
 	}
 
 	deleteFavorite (id) {

@@ -52,6 +52,13 @@
 
 .header .brand-logo {
   font-size: 1.5rem;
+  padding-left: 5px;
+}
+
+.form-section {
+  background: url("../plane.jpg") center / cover no-repeat;
+  padding: 10px 0 20px;
+  min-height: 80vh;
 }
 
 .favorites {
@@ -110,6 +117,11 @@
 
 .favorites .delete-favorite {
   margin-top: 10px;
+}
+
+.tickets-sections {
+  padding: 20px 5px;
+  background-color: #9E81D7;
 }
 
 .ticket-card {
@@ -178,6 +190,27 @@
   }
 
 }
+
+@media screen and (max-width: 426px) {
+    nav .brand-logo {
+      display: none;
+    }
+
+    .favorites .dropdown-content {
+      width: 320px !important;
+    }
+
+    .favorites .favorite-item-airline-img {
+      max-width: 30px;
+      margin-right: 0px;
+    }
+
+    .ticket-time-price {
+      margin-bottom: 10px;
+    }
+}
+
+
 
 
 
